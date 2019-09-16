@@ -1,4 +1,4 @@
-import { Neows } from './neows.js';
+import { Neows, Sentry } from './neows.js';
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,9 +9,11 @@ $(document).ready(function() {
     event.preventDefault();
     const startDate = $('#inputDate').val();
     $('#inputDate').val("");
-    $('#neow-results').text("")
+    $('#neow-results').text("");
+
     let neowsSearch = new Neows();
     let promise = neowsSearch.getNeows(startDate);
+
 
     promise.then(function(response) {
       const body = JSON.parse(response);
@@ -38,7 +40,7 @@ $(document).ready(function() {
             </div>
             </div>
             </div>`);
-            let dangerous
+            let dangerous;
             if (body.near_earth_objects[`${startDate}`][i].is_potentially_hazardous_asteroid === "true") {
               dangerous = "Yes";
             } else {
@@ -51,13 +53,51 @@ $(document).ready(function() {
             $(`#missDistance${i}`).html(`<p class="strong">Missed Earth By: ${Math.round(body.near_earth_objects[`${startDate}`][i].close_approach_data[0].miss_distance.miles)} miles</p>`);
             $(`#firstDate${i}`).html(`<p class="strong">Observed First On: ${body.near_earth_objects[`${startDate}`][i].orbital_data.first_observation_date}</p>`);
             $(`#description${i}`).html(`<p class="strong">Description: ${body.near_earth_objects[`${startDate}`][i].orbital_data.orbit_class.orbit_class_description}.</p>`);
-
-
-
           }
         }
 
         console.log(body.near_earth_objects[`${startDate}`][0].name);
       });
-  });
-});
+    });
+    $("#sentryButton").click(function(event){
+
+      let sentrySearch = new Sentry();
+      let promise2 = sentrySearch.getSentryData();
+
+      promise2.then(function(response) {
+        const body2 = JSON.parse(response);
+        console.log(body2);
+        for (let i = 0; i < 10; i++) {
+          $("#sentry-results").append(
+            `<div id="accordion">
+            <div class="card bg-light mb-3">
+            <div class="card-header" id="sentryheading${i}" data-toggle="collapse" data-target="#sentrycollapse${i}" aria-expanded="true" aria-controls="collapseOne"><span id=sentryname${i}></div>
+            <div id="sentrycollapse${i}" class="collapse show" aria-labelledby="sentryheading${i}" data-parent="#accordion">
+            <div class="card-body">
+            <div id=name${i}></div>
+            <div id=range${i}></div>
+            <div id=impacts${i}></div>
+            <div id=probability${i}></div>
+            <div id=diameter${i}></div>
+            <div id=distance${i}></div>
+            <div id=palermo${i}></div>
+            </div>
+            </div>
+            </div>
+            </div>`);
+
+            $(`#name${i}`).html(`<p class="strong">Name: ${body2.sentry_objects[i].fullname}</p>`);
+            $(`#range${i}`).html(`<p class="strong">Possible Impact Range: ${body2.sentry_objects[i].year_range_min} - ${body2.sentry_objects[i].year_range_max}</p>`);
+            $(`#impacts${i}`).html(`<p class="strong"># of Potential Impacts: ${body2.sentry_objects[i].potential_impacts}</p>`);
+            $(`#probability${i}`).html(`<p class="strong">Impact Probability: ${Number(body2.sentry_objects[i].impact_probability)}%</p>`);
+            $(`#diameter${i}`).html(`<p class="strong">Diameter: ${body2.sentry_objects[i].estimated_diameter} miles</p>`);
+            $(`#distance${i}`).html(`<p class="strong">Distance: ${(body2.sentry_objects[i].average_lunar_distance).toFixed(2)} Astronomical Units</p>`);
+            $(`#palermo${i}`).html(`<p class="strong"> <a href="https://cneos.jpl.nasa.gov/sentry/palermo_scale.html">Palermo Scale:</a> ${body2.sentry_objects[i].palermo_scale_ave}</p>`);
+          }
+
+
+
+        });
+      });
+
+    });
