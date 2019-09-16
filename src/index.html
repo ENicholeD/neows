@@ -1,19 +1,18 @@
-<!-- EXAMPLE CODE, REPLACE -->
-
-
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
+    <title>Neows Tracker</title>
   </head>
   <body>
     <div class="container">
-      <form >
-        <input type="text" id="inputDate" placeholder="2019-01-01">
-        <button id="holidayFinder"type="click" name="button">Enter</button>
+      <h1>Near Earth Object Tracker</h1>
+      <form id="dateSubmitForm">
+        <input type="date" id="inputDate" placeholder="2019-09-16">
+        <button id="dateButton" type="submit" name="button">Enter</button>
       </form>
-      <p id="nameOutput"></p>
-      <p id="descOutput"></p>
+
+      <div id="neow-results">
+      </div>
 
     </div>
   </body>
