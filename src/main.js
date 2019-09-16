@@ -29,13 +29,9 @@ $(document).ready(function() {
 
 
     setInterval(() => {
-      // let array = ['FHAZ', 'RHAZ', 'MAST', 'NAVCAM'];
-      // let countArray = Math.floor(Math.random()*4);
-      // console.log(countArray);
-      // let camera = array[countArray];
       let count = Math.floor(Math.random() * 838);
       console.log(count);
-      $(".space").html(`<img id="imageR" src=${body.photos[count].img_src}>`);
+      $(".space").html(`<img class="mySlides w3-animate-fading" id="imageR" src=${body.photos[count].img_src}>`);
       console.log(body.photos.length)
     }, 5000);
   });
