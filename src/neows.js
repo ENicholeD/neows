@@ -9,12 +9,26 @@ export class MarsWeather {
         } else {
           reject(Error(request.statusText));
         }
-      }
+      };
       request.open("GET", url, true);
       request.send();
     });
   }
-  // convert(temp){
-  //   (temp * 9/5) + 32).toFixed(3);
-  // }
+}
+export class RoverImage {
+  photo() {
+    return new Promise(function(resolve, reject) {
+      let request = new XMLHttpRequest();
+      const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${process.env.mwkey}2Oyd&camera=MAST`;
+      request.onload = function() {
+        if (this.status === 200) {
+          resolve(request.response);
+        } else {
+          reject(Error(request.statusText));
+        }
+      };
+      request.open("GET", url, true);
+      request.send();
+    });
+  }
 }

@@ -1,4 +1,4 @@
-import { MarsWeather } from './neows.js';
+import { MarsWeather, RoverImage } from './neows.js';
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,23 +7,36 @@ import './styles.css';
 $(document).ready(function() {
   let marsWeather= new MarsWeather();
   let promiseMW = marsWeather.weather();
-  // let convert = marsWeather.convert(temp);
-
   promiseMW.then(function(response) {
     const body = JSON.parse(response);
     console.log(body);
     for(let i = 0; i < body.sol_keys.length; i++){
       let sol = body.sol_keys[i];
-      $('.minC').text(`Min: ${body[sol].AT.mn}C`);
-      $('#date').text(body[sol].First_UTC);
-      $('.maxC').text(`Max: ${body[sol].AT.mx}C`);
-      $('.avgC').text(`Average: ${body[sol].AT.av}C`);
-      // console.log(marsWeather.convert(body[sol].AT.mn));
-
-      $('.minF').text(`Min: ${(body[sol].AT.mn * 9/5) + 32}F`);
-
-      $('.maxF').text(`Max: ${(body[sol].AT.mx * 9/5) + 32}F`);
-      $('.avgF').text(`Average: ${(body[sol].AT.av * 9/5) + 32}F`);
+      $('#date').text(`Date: ${(body[sol].Last_UTC).slice(0,10)}`);
+      $('#date').append(`<br>Sol: ${sol}`);
+      $('.minC').text(`Min: ${(body[sol].AT.mn).toFixed(1)}C`);
+      $('.maxC').text(`Max: ${(body[sol].AT.mx).toFixed(1)}C`);
+      $('.avgC').text(`Average: ${(body[sol].AT.av).toFixed(1)}C`);
+      $('.minF').text(`Min: ${((body[sol].AT.mn * 9/5) + 32).toFixed(1)}F`);
+      $('.maxF').text(`Max: ${((body[sol].AT.mx * 9/5) + 32).toFixed(1)}F`);
+      $('.avgF').text(`Average: ${((body[sol].AT.av * 9/5) + 32).toFixed(1)}F`);
     }
+  });
+  let roverImage = new RoverImage();
+  let promiseImg = roverImage.photo();
+  promiseImg.then(function(response){
+    const body = JSON.parse(response);
+
+
+    setInterval(() => {
+      // let array = ['FHAZ', 'RHAZ', 'MAST', 'NAVCAM'];
+      // let countArray = Math.floor(Math.random()*4);
+      // console.log(countArray);
+      // let camera = array[countArray];
+      let count = Math.floor(Math.random() * 838);
+      console.log(count);
+      $(".space").html(`<img id="imageR" src=${body.photos[count].img_src}>`);
+      console.log(body.photos.length)
+    }, 5000);
   });
 });
