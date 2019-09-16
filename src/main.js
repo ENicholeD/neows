@@ -1,29 +1,29 @@
-//EXAMPLE CODE, REPLACE
-
-
-import { HolidayFinder } from './holidayfinder.js';
+import { MarsWeather } from './neows.js';
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
 $(document).ready(function() {
-  $('#holidayFinder').click(function(event) {
-    event.preventDefault();
-    const date = $('#inputDate').val();
-    $('#inputDate').val("");
+  let marsWeather= new MarsWeather();
+  let promiseMW = marsWeather.weather();
+  // let convert = marsWeather.convert(temp);
 
-    let holidayFinder = new HolidayFinder();
-    let promise = holidayFinder.getHoliday(date);
+  promiseMW.then(function(response) {
+    const body = JSON.parse(response);
+    console.log(body);
+    for(let i = 0; i < body.sol_keys.length; i++){
+      let sol = body.sol_keys[i];
+      $('.minC').text(`Min: ${body[sol].AT.mn}C`);
+      $('#date').text(body[sol].First_UTC);
+      $('.maxC').text(`Max: ${body[sol].AT.mx}C`);
+      $('.avgC').text(`Average: ${body[sol].AT.av}C`);
+      // console.log(marsWeather.convert(body[sol].AT.mn));
 
-    promise.then(function(response) {
-      const body = JSON.parse(response);
-        for (let i = 0; i < body.response.holidays.length; i++) {
-          if (body.response.holidays[i].date.iso === date) {
-            $('#nameOutput').text(body.response.holidays[i].name);
-            $('#descOutput').text(body.response.holidays[i].description);
-          }
-      }
-    });
+      $('.minF').text(`Min: ${(body[sol].AT.mn * 9/5) + 32}F`);
+
+      $('.maxF').text(`Max: ${(body[sol].AT.mx * 9/5) + 32}F`);
+      $('.avgF').text(`Average: ${(body[sol].AT.av * 9/5) + 32}F`);
+    }
   });
 });
