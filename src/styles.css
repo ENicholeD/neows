@@ -1,0 +1,13 @@
+body{
+  text-align: center;
+}
+#imageR {
+  width: 800px;
+}
+p {
+  color: gray;
+  font-size: 12px;
+}
+.jumbotron {
+  background-color: transparent;
+}
