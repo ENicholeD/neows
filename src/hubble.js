@@ -1,8 +1,8 @@
-export class Coordinates {
-  getCoordinates() {
+export class Hubble {
+  getLatest() {
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
-      const url = `https://api.wheretheiss.at/v1/satellites/25544`;
+      const url = `https://cors-anywhere.herokuapp.com/http://hubblesite.org//api/v3/news_release/last`;
       request.onload = function() {
         if (this.status === 200) {
           resolve(request.response);
@@ -17,11 +17,14 @@ export class Coordinates {
 }
 
 
-export class Geocoding {
-  getLocation(lat, lng) {
+
+
+
+export class HubbleArchive {
+  getArchive() {
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
-      const url2 = `https://maps.googleapis.com/maps/api/geocode/json?key=${process.env.API_KEY}&latlng=${lat}, ${lng}`;
+      const url = `https://cors-anywhere.herokuapp.com/http://hubblesite.org/api/v3/news`;
       request.onload = function() {
         if (this.status === 200) {
           resolve(request.response);
@@ -29,7 +32,7 @@ export class Geocoding {
           reject(Error(request.statusText));
         }
       };
-      request.open("GET", url2, true);
+      request.open("GET", url, true);
       request.send();
     });
   }
