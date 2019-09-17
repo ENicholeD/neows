@@ -1,56 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Neows Tracker</title>
-<!DOCTYPE html>
-<html>
-  <head>
-    <title></title>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  </head>
-  <body>
-    <div class="jumbotron"></div>
-    <div class="container">
-      <h1>Near Earth Object Tracker</h1>
-      <div class="row">
-        <div class="col-md-6">
-          <form id="dateSubmitForm">
-            <input type="date" id="inputDate" placeholder="2019-09-16">
-            <button id="dateButton" type="submit" name="button">Enter</button>
-          </form>
-          <div id="neow-results">
-          </div>
-        </div>
-        <div class="col-md-6">
-          <button type="button" id="sentryButton" name="button">Click For Current Data</button>
-          <div id="sentry-results">
-
-          </div>
-
+<head>
+  <title>Neows Tracker</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+  <div class="jumbotron"></div>
+  <!-- Near Earth -->
+  <div class="container">
+    <h1>Near Earth Object Tracker</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <form id="dateSubmitForm">
+          <input type="date" id="inputDate" placeholder="2019-09-16">
+          <button id="dateButton" type="submit" name="button">Enter</button>
+        </form>
+        <div id="neow-results">
         </div>
       </div>
-        <div class="container">
-        <h3 id='date'></h3>
-        <div class="row">
-        <div class="col-md-6">
-          <h4>Martian atmospheric temperature in Celsius:</h4>
-          <div class="avgC"></div>
-          <div class="minC"></div>
-          <div class="maxC"></div>
-        </div>
-
-        <div class="col-md-6">
-          <h4>Martian atmospheric temperature in Farenheit:</h4>
-          <div class="avgF"></div>
-          <div class="minF"></div>
-          <div class="maxF"></div>
-        </div>
-        <div class="col-md-12">
-          <h4>Rover Image from Mars</h4>
-          <p>Disclaimer: some of the images are poor quality. We were unable to fix this issue.</p>
-          <div class="space"></div>
+      <div class="col-md-6">
+        <button type="button" id="sentryButton" name="button">Click For Current Data</button>
+        <div id="sentry-results">
         </div>
       </div>
     </div>
-  </body>
+  </div>
+  <!-- mars weather -->
+  <div class="container">
+    <h3 id='date'></h3>
+    <div class="row">
+      <div class="col-md-6">
+        <h4>Martian atmospheric temperature in Celsius:</h4>
+        <div class="avgC"></div>
+        <div class="minC"></div>
+        <div class="maxC"></div>
+      </div>
+
+      <div class="col-md-6">
+        <h4>Martian atmospheric temperature in Farenheit:</h4>
+        <div class="avgF"></div>
+        <div class="minF"></div>
+        <div class="maxF"></div>
+      </div>
+      <!-- rover -->
+      <div class="col-md-12">
+        <h4>Rover Image from Mars</h4>
+        <p>Disclaimer: some of the images are poor quality. We were unable to fix this issue.</p>
+        <div class="space"></div>
+      </div>
+    </div>
+  </div>
+  <!-- ISS tracker -->
+  <div class="container">
+    <h1>ISS Tracker</h1>
+    <div class="card">
+      <img src="https://static.wixstatic.com/media/5bc9ff_a6d47cc01cd549cbbca14c16a764affa~mv2.png/v1/fill/w_1075,h_428,al_c,lg_1,q_85/international-space-station-png-2.webp" width="400px" alt="Photo of ISS">
+      <div class="location">
+      </div>
+      <div class="latLng">
+      </div>
+      <div class="altitude">
+      </div>
+      <div class="velocity">
+      </div>
+      <div class="visibility">
+      </div>
+    </div>
+
+  </div>
+</body>
 </html>

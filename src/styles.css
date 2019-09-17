@@ -1,3 +1,4 @@
+
 body{
   text-align: center;
 }
@@ -10,4 +11,12 @@ p {
 }
 .jumbotron {
   background-color: transparent;
+}
+.card {
+  border: solid 2px green;
+}
+
+.strong {
+  font-weight: bold;
+
 }

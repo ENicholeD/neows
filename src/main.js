@@ -1,12 +1,42 @@
+import { Neows, Sentry } from './iss.js';
+import { MarsWeather, RoverImage } from './iss.js';
+import { Coordinates, Geocoding } from './iss.js';
 
-import { Neows, Sentry } from './neows.js';
-import { MarsWeather, RoverImage } from './neows.js';
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
 $(document).ready(function() {
+  // coordinates start here
+  let coordinates = new Coordinates();
+  let promise = coordinates.getCoordinates();
+
+  promise.then(function(response) {
+    const body = JSON.parse(response);
+    let lat = body.latitude.toFixed(2);
+    let lng = body.longitude.toFixed(2);
+    let alt = body.altitude.toFixed(2);
+    let velo = body.velocity.toFixed(2);
+    let vis = body.visibility;
+    // Geocoding starts here
+    let geoCode = new Geocoding();
+    let promise2 = geoCode.getLocation(lat, lng);
+
+    promise2.then(function(response) {
+      const body2 = JSON.parse(response);
+      let issCurrentLocation = body2.results[0].formatted_address;
+
+      $(".location").html(`<span class="strong">Current Location:</span> ${issCurrentLocation}`);
+      $(".latLng").html(`<span class="strong">Coordinates:</span> ${lat}°, ${lng}°`);
+      $(".altitude").html(`<span class="strong">Altitude:</span> ${alt}km`);
+      $(".velocity").html(`<span class="strong">Velocity:</span> ${velo}km/h`);
+      $(".visibility").html(`<span class="strong">Visibility:</span> ${vis.charAt(0).toUpperCase() + vis.substring(1)}`);
+
+    });
+
+  });
+  // Neows starts here
   $('#dateSubmitForm').submit(function(event) {
     event.preventDefault();
     const startDate = $('#inputDate').val();
@@ -15,11 +45,8 @@ $(document).ready(function() {
 
     let neowsSearch = new Neows();
     let promise = neowsSearch.getNeows(startDate);
-
-
     promise.then(function(response) {
       const body = JSON.parse(response);
-      console.log(body);
       for (let i = 0; i < body.element_count; i++) {
         if (body.element_count === 0) {
           console.log("zero results found");
@@ -58,9 +85,9 @@ $(document).ready(function() {
           }
         }
 
-        console.log(body.near_earth_objects[`${startDate}`][0].name);
       });
     });
+    // sentry starts here
     $("#sentryButton").click(function(event){
 
       let sentrySearch = new Sentry();
@@ -68,7 +95,6 @@ $(document).ready(function() {
 
       promise2.then(function(response) {
         const body2 = JSON.parse(response);
-        console.log(body2);
         for (let i = 0; i < 10; i++) {
           $("#sentry-results").append(
             `<div id="accordion">
@@ -98,36 +124,33 @@ $(document).ready(function() {
           }
         });
       });
-  let marsWeather= new MarsWeather();
-  let promiseMW = marsWeather.weather();
-  promiseMW.then(function(response) {
-    const body = JSON.parse(response);
-    console.log(body);
-    for(let i = 0; i < body.sol_keys.length; i++){
-      let sol = body.sol_keys[i];
-      $('#date').text(`Date: ${(body[sol].Last_UTC).slice(0,10)}`);
-      $('#date').append(`<br>Sol: ${sol}`);
-      $('.minC').text(`Min: ${(body[sol].AT.mn).toFixed(1)}C`);
-      $('.maxC').text(`Max: ${(body[sol].AT.mx).toFixed(1)}C`);
-      $('.avgC').text(`Average: ${(body[sol].AT.av).toFixed(1)}C`);
-      $('.minF').text(`Min: ${((body[sol].AT.mn * 9/5) + 32).toFixed(1)}F`);
-      $('.maxF').text(`Max: ${((body[sol].AT.mx * 9/5) + 32).toFixed(1)}F`);
-      $('.avgF').text(`Average: ${((body[sol].AT.av * 9/5) + 32).toFixed(1)}F`);
-    }
-  });
-  let roverImage = new RoverImage();
-  let promiseImg = roverImage.photo();
-  promiseImg.then(function(response){
-    const body = JSON.parse(response);
+      // marsWeather starts here
+      let marsWeather= new MarsWeather();
+      let promiseMW = marsWeather.weather();
+      promiseMW.then(function(response) {
+        const body = JSON.parse(response);
+        for(let i = 0; i < body.sol_keys.length; i++){
+          let sol = body.sol_keys[i];
+          $('#date').text(`Date: ${(body[sol].Last_UTC).slice(0,10)}`);
+          $('#date').append(`<br>Sol: ${sol}`);
+          $('.minC').text(`Min: ${(body[sol].AT.mn).toFixed(1)}C`);
+          $('.maxC').text(`Max: ${(body[sol].AT.mx).toFixed(1)}C`);
+          $('.avgC').text(`Average: ${(body[sol].AT.av).toFixed(1)}C`);
+          $('.minF').text(`Min: ${((body[sol].AT.mn * 9/5) + 32).toFixed(1)}F`);
+          $('.maxF').text(`Max: ${((body[sol].AT.mx * 9/5) + 32).toFixed(1)}F`);
+          $('.avgF').text(`Average: ${((body[sol].AT.av * 9/5) + 32).toFixed(1)}F`);
+        }
+      });
+      // roverImage starts here
+      let roverImage = new RoverImage();
+      let promiseImg = roverImage.photo();
+      promiseImg.then(function(response){
+        const body = JSON.parse(response);
 
 
-    setInterval(() => {
-      let count = Math.floor(Math.random() * 838);
-      console.log(count);
-      $(".space").html(`<img class="mySlides w3-animate-fading" id="imageR" src=${body.photos[count].img_src}>`);
-      console.log(body.photos.length)
-    }, 5000);
-  });
-});
-});
-
+        setInterval(() => {
+          let count = Math.floor(Math.random() * 838);
+          $(".space").html(`<img class="mySlides w3-animate-fading" id="imageR" src=${body.photos[count].img_src}>`);
+        }, 5000);
+      });
+    });
