@@ -1,4 +1,4 @@
-import { Donki} from './DONKI.js';
+import { Donki, Apod} from './DONKI.js';
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,7 +9,6 @@ $(document).ready(function(){
   let promiseDonki = donki.weatherDonki();
   promiseDonki.then(function(response) {
     const body = JSON.parse(response);
-    console.log(body);
     let type;
     $('.DRreport').append(`<p>Check the space weather <a href = "${body[0].messageURL}" target="_blank"> ${body[0].messageType}</a>.</p>`);
     $('.formDR').submit(function(event){
@@ -25,5 +24,13 @@ $(document).ready(function(){
         }
       }
     });
+  });
+  let apod = new Apod();
+  let promiseApod = apod.day();
+  promiseApod.then(function(response){
+    const body = JSON.parse(response);
+    $('.apod').prepend(`${body.date}  ${body.title}`);
+    $('.apod').append(`<img src = '${body.url}'>`);
+    $('.apod').append(`${body.explanation}`);
   });
 });
