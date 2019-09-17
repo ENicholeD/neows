@@ -1,8 +1,8 @@
-export class Neows {
-  getNeows(startDate) {
+export class Coordinates {
+  getCoordinates() {
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
-      const url = `https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${startDate}&detailed=true&api_key=${process.env.NEOWS_KEY}`;
+      const url = `https://api.wheretheiss.at/v1/satellites/25544`;
       request.onload = function() {
         if (this.status === 200) {
           resolve(request.response);
@@ -17,11 +17,11 @@ export class Neows {
 }
 
 
-export class Sentry {
-  getSentryData() {
+export class Geocoding {
+  getLocation(lat, lng) {
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
-      const url2 = `https://api.nasa.gov/neo/rest/v1/neo/sentry?is_active=true&page=0&size=10&api_key=${process.env.NEOWS_KEY}`;
+      const url2 = `https://maps.googleapis.com/maps/api/geocode/json?key=${process.env.API_KEY}&latlng=${lat}, ${lng}`;
       request.onload = function() {
         if (this.status === 200) {
           resolve(request.response);
