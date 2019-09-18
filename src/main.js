@@ -55,8 +55,15 @@ promise.then(function(response) {
   let promiseApod = apod.day();
   promiseApod.then(function(response){
     const body = JSON.parse(response);
+    let apodPic =  body.hdurl;
+    let podPic = 'http://www.aljanh.net/data/archive/img/3140437918.png'
     $('.apod').prepend(`${body.date}  ${body.title}`);
-    $('.apod').append(`<img src = '${body.url}'>`);
+    // $('.apod').append(`<img id = 'apod'src = '${body.url}'>`);
+    $('body').css("background-image","url('" + podPic +"'), url('" + apodPic + "')");
+
+    // $('body').css(`"background-image","url('${body.hdurl}')"`);
+
+
     $('.apod').append(`${body.explanation}`);
   });
 
