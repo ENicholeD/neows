@@ -1,0 +1,22 @@
+
+body{
+  text-align: center;
+}
+#imageR {
+  width: 800px;
+}
+p {
+  color: gray;
+  font-size: 12px;
+}
+.jumbotron {
+  background-color: transparent;
+}
+.card {
+  border: solid 2px green;
+}
+
+.strong {
+  font-weight: bold;
+
+}
