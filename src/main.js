@@ -43,6 +43,11 @@ $(document).ready(function(){
   $("#donkiBtn").click(function(){
   $("#donki").show();
   $("#nearEarth, #marsWeather, #issTracker, #hubbleNews").hide();
+  $('.output').text('');
+  $('.errorOutput').text('');
+  $('.DRreport').text('');
+
+
   let donki = new Donki();
   let promiseDonki = donki.weatherDonki();
   promiseDonki.then(function(response) {
