@@ -2,10 +2,23 @@
 body {
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: local;
+
 }
+/* html {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: local;
+} */
 .container {
   display: none;
+}
+.nbp{
+  display: block;
+  float:left;
+  margin-left: 50%;
+  margin-top: 40%;
+
 }
 #imageR {
   width: 800px;

@@ -70,7 +70,7 @@ $(document).ready(function(){
   let promiseApod = apod.day();
   promiseApod.then(function(response){
     const body = JSON.parse(response);
-    let apodPic =  body.hdurl;
+    let apodPic =  body.url;
     let podPic = 'http://www.aljanh.net/data/archive/img/3140437918.png'
     $('.apod').prepend(`${body.date}  ${body.title}`);
     // $('.apod').append(`<img id = 'apod'src = '${body.url}'>`);
