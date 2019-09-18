@@ -16,6 +16,7 @@ $(document).ready(function(){
   $("#hubbleNewsBtn").click(function(){
     $("#hubbleNews").show();
     $("#donki, #nearEarth, #marsWeather, #issTracker").hide();
+    $('.archive').text('');
   let hubble = new Hubble();
   let promise = hubble.getLatest();
   promise.then(function(response) {
@@ -30,11 +31,10 @@ $(document).ready(function(){
   promise2.then(function(response) {
     const body2 = JSON.parse(response);
     console.log(body2[0].name);
-    for (var i = 0; i < body2.length; i++) {
-      $(".archive").append(`<div class= "card"><div class="title${i}"></div><div class="url${i}"></div></div>`)
-
+    for (var i = 1; i < 7; i++) {
+      $(".archive").append(`<div id="archiveCard" class= "card"><div class="title${i}"></div><div class="url${i}"></div></div>`)
        $(`.title${i}`).html(`<h5>${body2[i].name}</h5>`)
-       $(`.url${i}`).html(`<a href="${body2[i].url}">${body2[i].url}</a>`)
+       $(`.url${i}`).html(`<a href="${body2[i].url}" target="blank">${body2[i].url}</a>`)
     }
     });
   });
@@ -72,14 +72,7 @@ $(document).ready(function(){
     const body = JSON.parse(response);
     let apodPic =  body.url;
     let podPic = 'http://www.aljanh.net/data/archive/img/3140437918.png'
-    $('.apod').prepend(`${body.date}  ${body.title}`);
-    // $('.apod').append(`<img id = 'apod'src = '${body.url}'>`);
     $('body').css("background-image","url('" + podPic +"'), url('" + apodPic + "')");
-
-    // $('body').css(`"background-image","url('${body.hdurl}')"`);
-
-
-    $('.apod').append(`${body.explanation}`);
   });
 
 
@@ -176,13 +169,13 @@ $(document).ready(function(){
 
     // sentry starts here
     $("#sentryButton").click(function(event){
-
+      $("#sentry-results").text('');
       let sentrySearch = new Sentry();
       let promise2 = sentrySearch.getSentryData();
 
       promise2.then(function(response) {
         const body2 = JSON.parse(response);
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < 3; i++) {
           $("#sentry-results").append(
             `<div id="accordion">
             <div id="sentryCard" class="card bg-light mb-3">

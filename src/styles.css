@@ -3,18 +3,33 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: local;
-
 }
 /* html {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: local;
 } */
+input{
+  background-color: black;
+  opacity: .732;
+  border: none;
+  color: #ccff33;
+  font-family: 'Orbitron', sans-serif;
 
+}
 .container {
   display: none;
 }
+#neowHeader{
+  font-family: 'Orbitron', sans-serif;
+  opacity: .732;
+  color: #ccff33;
+  text-align: center;
 
+}
+.neowsForm{
+  text-align: center;
+}
 button {
   color: #ccff33;
   background-color: transparent;
@@ -22,15 +37,52 @@ button {
   font-family: 'Orbitron', sans-serif;
   opacity: .732;
 }
+#hubbleCard{
+  background-color: black;
+  opacity: .6;
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+}
+#archiveCard{
+  opacity: .6;
+  background-color: black;
+  text-align: center;
+}
+.archive h5{
+  padding-top: 15px;
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+
+}
+.title{
+  padding-top: 15px;
+  font-family: 'Orbitron', sans-serif;
+  color: #ccff33;
+}
+#hubbleNews h1{
+  font-family: 'Orbitron', sans-serif;
+  color: #ccff33;
+  text-align: center;
+  opacity: .732;
+
+}
+#issTracker h1{
+  font-family: 'Orbitron', sans-serif;
+  color: #ccff33;
+  text-align: center;
+  opacity: .732;
+}
+.archive a{
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+  color: #ccff33;
+}
 
 #sentryCard, #neowCard {
   opacity: .4;
   width: 500px;
 
 }
-
-
-
 
 .card-body {
   background-color: black;
@@ -46,13 +98,15 @@ button {
   color: #ccff33;
   margin-left: 21%;
   margin-top: 10%;
+  opacity: .732;
+
 }
 #marsWeather {
-  /* display: block; */
   background-color: transparent;
   color: #ccff33;
   text-align: center;
   align-items: center;
+  opacity: .732;
 }
 
 .hnb {
@@ -117,7 +171,7 @@ width: 50%;
 text-align: center;
 }
 
-p {
+#disclaimer {
   color: gray;
   font-size: 12px;
 }
