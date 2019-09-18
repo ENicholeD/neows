@@ -4,6 +4,9 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+.container {
+  display: none;
+}
 #imageR {
   width: 800px;
 }
@@ -14,18 +17,11 @@ p {
 .jumbotron {
   background-color: transparent;
 }
-/* .card {
-  border: solid 2px green;
-} */
 
 .strong {
   font-weight: bold;
 
 }
-/* .card {
-  border: solid 1px black;
-  display: block;
-} */
 
 h1 {
   margin-bottom: 30px;
@@ -48,11 +44,6 @@ img {
   margin-left: 16px;
 }
 
-/* .body {
-  font-size: 13px;
-  text-align: left;
-} */
-
 .archive .card {
   border-radius: 0px;
   border: none;
@@ -64,7 +55,3 @@ img {
 h5 {
   font-size: 14px;
 }
-/* #apod{
-  background-size: cover;
-  background-repeat: no-repeat;
-} */

@@ -4,7 +4,14 @@
     <title></title>
   </head>
   <body>
-    <div id="marsRover" class="container">
+    <button type="button" id="issTrackerBtn" name="button">ISS Tracker</button>
+    <button type="button" id="marsWeatherBtn" name="button">Mars Weather</button>
+    <button type="button" id="hubbleNewsBtn" name="button">Hubble News</button>
+    <button type="button" id="donkiBtn" name="button">Donki</button>
+    <button type="button" id="neowsBtn" name="button">NEOWS</button>
+    <button type="button" id="reset" name="button">Hide All</button>
+
+    <div id="donki" class="container">
     <div class="DRreport"></div>
       <form class="formDR">
       <select class="eventSelect" name="">
@@ -31,6 +38,8 @@
         </form>
         <div id="neow-results">
         </div>
+
+
       </div>
       <div class="col-md-6">
         <button type="button" id="sentryButton" name="button">Click For Current Data</button>
@@ -40,7 +49,7 @@
     </div>
   </div>
   <!-- mars weather -->
-  <div class="container">
+  <div id="marsWeather" class="container">
     <h3 id='date'></h3>
     <div class="row">
       <div class="col-md-6">
@@ -65,7 +74,7 @@
     </div>
   </div>
   <!-- ISS tracker -->
-  <div class="container">
+  <div id="issTracker" class="container">
     <h1>ISS Tracker</h1>
     <div class="card">
       <img src="https://static.wixstatic.com/media/5bc9ff_a6d47cc01cd549cbbca14c16a764affa~mv2.png/v1/fill/w_1075,h_428,al_c,lg_1,q_85/international-space-station-png-2.webp" width="400px" alt="Photo of ISS">
@@ -82,7 +91,7 @@
     </div>
 
   </div>
-  <div class="container">
+  <div id="hubbleNews" class="container">
    <h1>Latest from NASA's Hubble Telescope</h1>
 
    <div class="card">

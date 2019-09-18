@@ -9,10 +9,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
 $(document).ready(function(){
+  $("#reset").click(function() {
+    $(".container").hide();
+  });
+
+  $("#hubbleNewsBtn").click(function(){
+    $("#hubbleNews").show();
+    $("#donki, #nearEarth, #marsWeather, #issTracker").hide();
   let hubble = new Hubble();
   let promise = hubble.getLatest();
-
-promise.then(function(response) {
+  promise.then(function(response) {
   const body = JSON.parse(response);
   $(".title").html(`${body.name}`);
   $(".body").html(` ${body.abstract}`);
@@ -31,6 +37,12 @@ promise.then(function(response) {
        $(`.url${i}`).html(`<a href="${body2[i].url}">${body2[i].url}</a>`)
     }
     });
+  });
+
+
+  $("#donkiBtn").click(function(){
+  $("#donki").show();
+  $("#nearEarth, #marsWeather, #issTracker, #hubbleNews").hide();
   let donki = new Donki();
   let promiseDonki = donki.weatherDonki();
   promiseDonki.then(function(response) {
@@ -51,6 +63,9 @@ promise.then(function(response) {
       }
     });
   });
+});
+
+
   let apod = new Apod();
   let promiseApod = apod.day();
   promiseApod.then(function(response){
@@ -67,6 +82,10 @@ promise.then(function(response) {
     $('.apod').append(`${body.explanation}`);
   });
 
+
+  $("#issTrackerBtn").click(function(){
+    $("#issTracker").show();
+    $("#nearEarth, #marsWeather, #donki, #hubbleNews").hide();
 // coordinates start here
   let coordinates = new Coordinates();
   let promiseC = coordinates.getCoordinates();
@@ -78,14 +97,16 @@ promise.then(function(response) {
     let alt = body.altitude.toFixed(2);
     let velo = body.velocity.toFixed(2);
     let vis = body.visibility;
+    console.log(lat);
     // Geocoding starts here
     let geoCode = new Geocoding();
     let promise2 = geoCode.getLocation(lat, lng);
 
     promise2.then(function(response) {
       const body2 = JSON.parse(response);
+      console.log(body2);
+      console.log(body2.results[0].formatted_address);
       let issCurrentLocation = body2.results[0].formatted_address;
-
       $(".location").html(`<span class="strong">Current Location:</span> ${issCurrentLocation}`);
       $(".latLng").html(`<span class="strong">Coordinates:</span> ${lat}°, ${lng}°`);
       $(".altitude").html(`<span class="strong">Altitude:</span> ${alt}km`);
@@ -93,9 +114,14 @@ promise.then(function(response) {
       $(".visibility").html(`<span class="strong">Visibility:</span> ${vis.charAt(0).toUpperCase() + vis.substring(1)}`);
     });
   });
+});
 
 
   // Neows starts here
+  $("#neowsBtn").click(function(){
+    $("#nearEarth").show();
+    $("#donki, #marsWeather, #issTracker, #hubbleNews").hide();
+
   $('#dateSubmitForm').submit(function(event) {
     event.preventDefault();
     const startDate = $('#inputDate').val();
@@ -185,9 +211,14 @@ promise.then(function(response) {
           }
         });
       });
+    });
 
 
       // marsWeather starts here
+      $("#marsWeatherBtn").click(function() {
+        $("#marsWeather").show();
+        $("#donki, #nearEarth, #issTracker, #hubbleNews").hide();
+
       let marsWeather= new MarsWeather();
       let promiseMW = marsWeather.weather();
       promiseMW.then(function(response) {
@@ -204,9 +235,6 @@ promise.then(function(response) {
           $('.avgF').text(`Average: ${((body[sol].AT.av * 9/5) + 32).toFixed(1)}F`);
         }
       });
-
-
-
       // roverImage starts here
     let roverImage = new RoverImage();
     let promiseImg = roverImage.photo();
@@ -218,3 +246,4 @@ promise.then(function(response) {
       }, 5000);
     });
   });
+});
