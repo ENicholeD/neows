@@ -1,23 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title></title>
-  </head>
-  <body>
+<head>
+  <title></title>
+</head>
+<body>
+
+  <span class="isb">
     <button type="button" id="issTrackerBtn" name="button">ISS Tracker</button>
+  </span>
+
+  <span class="mwb">
     <button type="button" id="marsWeatherBtn" name="button">Mars Weather</button>
-    <button type="button" id="hubbleNewsBtn" name="button">Hubble News</button>
+  </span>
+
+  <span class="nbp">
+    <button type="button" id="neowsBtn" name="button">NEOWS</button>
+  </span>
+
+  <span class="dbp">
     <button type="button" id="donkiBtn" name="button">Donki</button>
+  </span>
 
-    <div class="nbp">
-      <button type="button" id="neowsBtn" name="button">NEOWS</button>
-    </div>
+  <span class="hnb">
+    <button type="button" id="hubbleNewsBtn" name="button">Hubble News</button>
+  </span>
 
+  <span class="hb">
     <button type="button" id="reset" name="button">Hide All</button>
+  </span>
 
-    <div id="donki" class="container">
+  <div id="donki" class="container">
     <div class="DRreport"></div>
-      <form class="formDR">
+    <form class="formDR">
       <select class="eventSelect" name="">
         <option type="selected">Choose event</option>
         <option value="FLR">Solar Flare</option>
@@ -96,23 +110,23 @@
 
   </div>
   <div id="hubbleNews" class="container">
-   <h1>Latest from NASA's Hubble Telescope</h1>
+    <h1>Latest from NASA's Hubble Telescope</h1>
 
-   <div class="card">
-     <div class="row no-gutters">
-       <!-- <div class="col-auto"></div> -->
-       <!-- <div class="col"> -->
-       <p class="title"></p>
-         <div class="card-block px-2">
-           <span id="image"></span>
-           <p class="body"></p>
-         </div>
-       <!-- </div> -->
-     </div>
-   </div>
-   <div class="archive">
-     <h2>Archive:</h2>
-   </div>
- </div>
+    <div class="card">
+      <div class="row no-gutters">
+        <!-- <div class="col-auto"></div> -->
+        <!-- <div class="col"> -->
+        <p class="title"></p>
+        <div class="card-block px-2">
+          <span id="image"></span>
+          <p class="body"></p>
+        </div>
+        <!-- </div> -->
+      </div>
+    </div>
+    <div class="archive">
+      <h2>Archive:</h2>
+    </div>
+  </div>
 </body>
 </html>

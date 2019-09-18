@@ -13,11 +13,58 @@ body {
 .container {
   display: none;
 }
+
+
+button {
+  color: green;
+  background-color: transparent;
+  border: none;
+}
+
+
+.hnb {
+  display: block;
+  margin-left: 88%;
+  margin-top: 36%;
+  position: absolute;
+  transform: rotate(10deg);
+}
+
+.hb {
+  display: block;
+  margin-left: 6%;
+  margin-top: 10%;
+  position: absolute;
+  transform: rotate(-43deg);
+}
+.mwb {
+  display: block;
+  margin-left: 12%;
+  margin-top: 35%;
+  position: absolute;
+  transform: rotate(-10deg);
+}
+
+.isb {
+  display: block;
+  margin-left: 45%;
+  margin-top: 38%;
+  position: absolute;
+
+}
 .nbp{
   display: block;
-  float:left;
-  margin-left: 50%;
-  margin-top: 40%;
+  margin-left: 32%;
+  margin-top: 44%;
+  position: absolute;
+}
+
+.dbp{
+  display: block;
+  /* float:left; */
+  margin-left: 62%;
+  margin-top: 44%;
+  position: absolute;
 
 }
 #imageR {
