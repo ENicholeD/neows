@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>Space Shit</title>
+  <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <span class="isb">
-    <button type="button" id="issTrackerBtn" name="button">ISS Tracker</button>
+    <button type="button" id="issTrackerBtn" name="button">ISS</button>
   </span>
 
   <span class="mwb">
@@ -69,28 +70,30 @@
   <!-- mars weather -->
   <div id="marsWeather" class="container">
     <h3 id='date'></h3>
-    <div class="row">
+    <div id="mwRow" class="row">
       <div class="col-md-6">
-        <h4>Martian atmospheric temperature in Celsius:</h4>
         <div class="avgC"></div>
         <div class="minC"></div>
         <div class="maxC"></div>
       </div>
 
       <div class="col-md-6">
-        <h4>Martian atmospheric temperature in Farenheit:</h4>
         <div class="avgF"></div>
         <div class="minF"></div>
         <div class="maxF"></div>
       </div>
+    </div>
       <!-- rover -->
+      <div class="row">
       <div class="col-md-12">
-        <h4>Rover Image from Mars</h4>
         <p>Disclaimer: some of the images are poor quality. We were unable to fix this issue.</p>
         <div class="space"></div>
+        <br>
       </div>
     </div>
   </div>
+
+
   <!-- ISS tracker -->
   <div id="issTracker" class="container">
     <h1>ISS Tracker</h1>

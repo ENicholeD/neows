@@ -39,7 +39,7 @@ export class Sentry {
   getSentryData() {
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
-      const url2 = `https://api.nasa.gov/neo/rest/v1/neo/sentry?is_active=true&page=0&size=10&api_key=${process.env.API_KEY}`;
+      const url2 = `https://api.nasa.gov/neo/rest/v1/neo/sentry?is_active=true&page=0&size=4&api_key=${process.env.API_KEY}`;
       request.onload = function() {
         if (this.status === 200) {
           resolve(request.response);

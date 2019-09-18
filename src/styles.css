@@ -10,17 +10,50 @@ body {
   background-repeat: no-repeat;
   background-attachment: local;
 } */
+
 .container {
   display: none;
 }
 
-
 button {
-  color: green;
+  color: #ccff33;
   background-color: transparent;
   border: none;
+  font-family: 'Orbitron', sans-serif;
+  opacity: .732;
 }
 
+#sentryCard, #neowCard {
+  opacity: .4;
+  width: 500px;
+
+}
+
+
+
+
+.card-body {
+  background-color: black;
+  color: #ccff33;
+}
+
+#sentry-results p, #neow-results p {
+  color: #ccff33;
+}
+#issTracker .card {
+  display: block;
+  background-color: transparent;
+  color: #ccff33;
+  margin-left: 21%;
+  margin-top: 10%;
+}
+#marsWeather {
+  /* display: block; */
+  background-color: transparent;
+  color: #ccff33;
+  text-align: center;
+  align-items: center;
+}
 
 .hnb {
   display: block;
@@ -45,9 +78,12 @@ button {
   transform: rotate(-10deg);
 }
 
+#mwRow {
+  margin-top: 10%;
+}
 .isb {
   display: block;
-  margin-left: 45%;
+  margin-left: 47.79%;
   margin-top: 38%;
   position: absolute;
 
@@ -68,8 +104,19 @@ button {
 
 }
 #imageR {
-  width: 800px;
+  width: 400px;
+  opacity: .5;
+
 }
+
+.space {
+display: block;
+margin-left: 32%;
+margin-right: auto;
+width: 50%;
+text-align: center;
+}
+
 p {
   color: gray;
   font-size: 12px;

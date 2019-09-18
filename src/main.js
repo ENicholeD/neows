@@ -132,15 +132,15 @@ $(document).ready(function(){
     let promise = neowsSearch.getNeows(startDate);
     promise.then(function(response) {
       const body = JSON.parse(response);
-      for (let i = 0; i < body.element_count; i++) {
+      for (let i = 0; i < 3; i++) {
         if (body.element_count === 0) {
           console.log("zero results found");
         } else {
 
           $("#neow-results").append(
             `<div id="accordion">
-            <div class="card bg-light mb-3">
-            <div class="card-header" id="heading${i}" data-toggle="collapse" data-target="#collapse${i}" aria-expanded="true" aria-controls="collapseOne"><span id=name${i}></div>
+            <div id="neowCard" class="card bg-light mb-3">
+            <div class="card-header" id="heading${i}" data-toggle="collapse" data-target="#collapse${i}" aria-expanded="true" aria-controls="collapseOne"></div>
             <div id="collapse${i}" class="collapse show" aria-labelledby="heading${i}" data-parent="#accordion">
             <div class="card-body">
             <div id=name${i}></div>
@@ -182,10 +182,10 @@ $(document).ready(function(){
 
       promise2.then(function(response) {
         const body2 = JSON.parse(response);
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 4; i++) {
           $("#sentry-results").append(
             `<div id="accordion">
-            <div class="card bg-light mb-3">
+            <div id="sentryCard" class="card bg-light mb-3">
             <div class="card-header" id="sentryheading${i}" data-toggle="collapse" data-target="#sentrycollapse${i}" aria-expanded="true" aria-controls="collapseOne"><span id=sentryname${i}></div>
             <div id="sentrycollapse${i}" class="collapse show" aria-labelledby="sentryheading${i}" data-parent="#accordion">
             <div class="card-body">
@@ -227,12 +227,12 @@ $(document).ready(function(){
           let sol = body.sol_keys[i];
           $('#date').text(`Date: ${(body[sol].Last_UTC).slice(0,10)}`);
           $('#date').append(`<br>Sol: ${sol}`);
-          $('.minC').text(`Min: ${(body[sol].AT.mn).toFixed(1)}C`);
-          $('.maxC').text(`Max: ${(body[sol].AT.mx).toFixed(1)}C`);
-          $('.avgC').text(`Average: ${(body[sol].AT.av).toFixed(1)}C`);
-          $('.minF').text(`Min: ${((body[sol].AT.mn * 9/5) + 32).toFixed(1)}F`);
-          $('.maxF').text(`Max: ${((body[sol].AT.mx * 9/5) + 32).toFixed(1)}F`);
-          $('.avgF').text(`Average: ${((body[sol].AT.av * 9/5) + 32).toFixed(1)}F`);
+          $('.minC').text(`Min: ${(body[sol].AT.mn).toFixed(1)}°C`);
+          $('.maxC').text(`Max: ${(body[sol].AT.mx).toFixed(1)}°C`);
+          $('.avgC').text(`Average: ${(body[sol].AT.av).toFixed(1)}°C`);
+          $('.minF').text(`Min: ${((body[sol].AT.mn * 9/5) + 32).toFixed(1)}°F`);
+          $('.maxF').text(`Max: ${((body[sol].AT.mx * 9/5) + 32).toFixed(1)}°F`);
+          $('.avgF').text(`Average: ${((body[sol].AT.av * 9/5) + 32).toFixed(1)}°F`);
         }
       });
       // roverImage starts here
