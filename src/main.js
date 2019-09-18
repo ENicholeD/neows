@@ -1,13 +1,36 @@
-import { Donki, Apod} from './DONKI.js';
+import { Donki, Apod} from './iss.js';
 import { Neows, Sentry } from './iss.js';
 import { MarsWeather, RoverImage } from './iss.js';
 import { Coordinates, Geocoding } from './iss.js';
+import { Hubble, HubbleArchive } from './iss.js';
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
 $(document).ready(function(){
+  let hubble = new Hubble();
+  let promise = hubble.getLatest();
+
+promise.then(function(response) {
+  const body = JSON.parse(response);
+  $(".title").html(`${body.name}`);
+  $(".body").html(` ${body.abstract}`);
+  $("#image").html(`<img src="${body.thumbnail}" alt="">`);
+  });
+  let hubbleArchive = new HubbleArchive();
+  let promise2 = hubbleArchive.getArchive();
+
+  promise2.then(function(response) {
+    const body2 = JSON.parse(response);
+    console.log(body2[0].name);
+    for (var i = 0; i < body2.length; i++) {
+      $(".archive").append(`<div class= "card"><div class="title${i}"></div><div class="url${i}"></div></div>`)
+
+       $(`.title${i}`).html(`<h5>${body2[i].name}</h5>`)
+       $(`.url${i}`).html(`<a href="${body2[i].url}">${body2[i].url}</a>`)
+    }
+    });
   let donki = new Donki();
   let promiseDonki = donki.weatherDonki();
   promiseDonki.then(function(response) {
@@ -36,11 +59,12 @@ $(document).ready(function(){
     $('.apod').append(`<img src = '${body.url}'>`);
     $('.apod').append(`${body.explanation}`);
   });
-});  // coordinates start here
-  let coordinates = new Coordinates();
-  let promise = coordinates.getCoordinates();
 
-  promise.then(function(response) {
+// coordinates start here
+  let coordinates = new Coordinates();
+  let promiseC = coordinates.getCoordinates();
+
+  promiseC.then(function(response) {
     const body = JSON.parse(response);
     let lat = body.latitude.toFixed(2);
     let lng = body.longitude.toFixed(2);
@@ -60,10 +84,10 @@ $(document).ready(function(){
       $(".altitude").html(`<span class="strong">Altitude:</span> ${alt}km`);
       $(".velocity").html(`<span class="strong">Velocity:</span> ${velo}km/h`);
       $(".visibility").html(`<span class="strong">Visibility:</span> ${vis.charAt(0).toUpperCase() + vis.substring(1)}`);
-
     });
-
   });
+
+
   // Neows starts here
   $('#dateSubmitForm').submit(function(event) {
     event.preventDefault();
@@ -115,6 +139,8 @@ $(document).ready(function(){
 
       });
     });
+
+
     // sentry starts here
     $("#sentryButton").click(function(event){
 
@@ -152,6 +178,8 @@ $(document).ready(function(){
           }
         });
       });
+
+
       // marsWeather starts here
       let marsWeather= new MarsWeather();
       let promiseMW = marsWeather.weather();
@@ -169,17 +197,17 @@ $(document).ready(function(){
           $('.avgF').text(`Average: ${((body[sol].AT.av * 9/5) + 32).toFixed(1)}F`);
         }
       });
+
+
+
       // roverImage starts here
-      let roverImage = new RoverImage();
-      let promiseImg = roverImage.photo();
-      promiseImg.then(function(response){
-        const body = JSON.parse(response);
-
-
-        setInterval(() => {
-          let count = Math.floor(Math.random() * 838);
-          $(".space").html(`<img class="mySlides w3-animate-fading" id="imageR" src=${body.photos[count].img_src}>`);
-        }, 5000);
-      });
+    let roverImage = new RoverImage();
+    let promiseImg = roverImage.photo();
+    promiseImg.then(function(response){
+      const body = JSON.parse(response);
+      setInterval(() => {
+        let count = Math.floor(Math.random() * 838);
+        $(".space").html(`<img class="mySlides w3-animate-fading" id="imageR" src=${body.photos[count].img_src}>`);
+      }, 5000);
     });
-
+  });

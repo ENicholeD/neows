@@ -1,7 +1,7 @@
 
-body{
+/* body{
   text-align: center;
-}
+} */
 #imageR {
   width: 800px;
 }
@@ -12,11 +12,53 @@ p {
 .jumbotron {
   background-color: transparent;
 }
-.card {
+/* .card {
   border: solid 2px green;
-}
+} */
 
 .strong {
   font-weight: bold;
 
+}
+/* .card {
+  border: solid 1px black;
+  display: block;
+} */
+
+h1 {
+  margin-bottom: 30px;
+}
+
+h2 {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+img {
+  float: left;
+  display: block;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+.title {
+  font-weight: bold;
+  margin-left: 16px;
+}
+
+/* .body {
+  font-size: 13px;
+  text-align: left;
+} */
+
+.archive .card {
+  border-radius: 0px;
+  border: none;
+  border-bottom: solid 1px black;
+  margin-top: 20px;
+  padding-bottom: 10px;
+}
+
+h5 {
+  font-size: 14px;
 }
