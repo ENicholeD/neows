@@ -1,14 +1,16 @@
+.sss{
+  padding-top: 1%;
+  font-family: 'Orbitron', sans-serif;
+  opacity: .732;
+  color: #ccff33;
+  text-align: center;
+}
 
 body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: local;
 }
-/* html {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: local;
-} */
 input{
   background-color: black;
   opacity: .732;
@@ -17,14 +19,23 @@ input{
   font-family: 'Orbitron', sans-serif;
 
 }
+select{
+  background-color: black;
+  opacity: .732;
+  border: none;
+  color: #ccff33;
+  font-family: 'Orbitron', sans-serif;
+}
 .container {
   display: none;
 }
 #neowHeader{
+  padding-top: 2%;
   font-family: 'Orbitron', sans-serif;
   opacity: .732;
   color: #ccff33;
   text-align: center;
+  margin-bottom: 10%;
 
 }
 .neowsForm{
@@ -52,7 +63,9 @@ button {
   padding-top: 15px;
   font-family: 'Orbitron', sans-serif;
   color: white;
-
+}
+#hubbleHeader{
+  padding-top: 2%
 }
 .title{
   padding-top: 15px;
@@ -67,6 +80,7 @@ button {
 
 }
 #issTracker h1{
+  padding-top: 2%;
   font-family: 'Orbitron', sans-serif;
   color: #ccff33;
   text-align: center;
@@ -102,11 +116,13 @@ button {
 
 }
 #marsWeather {
+  padding-top: 0.5%;
   background-color: transparent;
   color: #ccff33;
   text-align: center;
   align-items: center;
   opacity: .732;
+  font-family: 'Orbitron', sans-serif;
 }
 
 .hnb {

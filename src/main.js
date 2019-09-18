@@ -11,9 +11,12 @@ import './styles.css';
 $(document).ready(function(){
   $("#reset").click(function() {
     $(".container").hide();
+    $(".sss").show();
+
   });
 
   $("#hubbleNewsBtn").click(function(){
+    $(".sss").hide();
     $("#hubbleNews").show();
     $("#donki, #nearEarth, #marsWeather, #issTracker").hide();
     $('.archive').text('');
@@ -41,6 +44,7 @@ $(document).ready(function(){
 
 
   $("#donkiBtn").click(function(){
+    $(".sss").hide();
   $("#donki").show();
   $("#nearEarth, #marsWeather, #issTracker, #hubbleNews").hide();
   $('.output').text('');
@@ -82,6 +86,7 @@ $(document).ready(function(){
 
 
   $("#issTrackerBtn").click(function(){
+    $(".sss").hide();
     $("#issTracker").show();
     $("#nearEarth, #marsWeather, #donki, #hubbleNews").hide();
 // coordinates start here
@@ -117,6 +122,7 @@ $(document).ready(function(){
 
   // Neows starts here
   $("#neowsBtn").click(function(){
+    $(".sss").hide();
     $("#nearEarth").show();
     $("#donki, #marsWeather, #issTracker, #hubbleNews").hide();
 
@@ -174,6 +180,7 @@ $(document).ready(function(){
 
     // sentry starts here
     $("#sentryButton").click(function(event){
+      $(".sss").hide();
       $("#sentry-results").text('');
       let sentrySearch = new Sentry();
       let promise2 = sentrySearch.getSentryData();
@@ -214,6 +221,7 @@ $(document).ready(function(){
 
       // marsWeather starts here
       $("#marsWeatherBtn").click(function() {
+        $(".sss").hide();
         $("#marsWeather").show();
         $("#donki, #nearEarth, #issTracker, #hubbleNews").hide();
 
