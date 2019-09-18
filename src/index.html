@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Neows Tracker</title>
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-</head>
-<body>
-  <div class="jumbotron"></div>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div class="jumbotron"></div>
+    <div class="DRreport"></div>
+      <form class="formDR">
+      <select class="eventSelect" name="">
+        <option type="selected">Choose event</option>
+        <option value="FLR">Solar Flare</option>
+        <option value="GST">Geomagnetic Storm</option>
+        <option value="CMEanalysis">Coronal Mass Ejection</option>
+        <option value="IST">Interplanetary Shock</option>
+      </select>
+      <button id='buttonDR'type="submit">See event</button>
+    </form>
+    <div class="output"></div>
+    <div class="errorOutput"></div>
+    <br><div class="apod"></div>
+  </body>
   <!-- Near Earth -->
   <div class="container">
     <h1>Near Earth Object Tracker</h1>
