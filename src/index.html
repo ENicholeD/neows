@@ -26,7 +26,7 @@
   </span>
 
   <span class="hb">
-    <button type="button" id="reset" name="button">Hide All</button>
+    <button type="button" id="reset" name="button">CLEAR</button>
   </span>
   <div class="sss">
     <h1>Space Situation Senter</h1>
@@ -52,6 +52,7 @@
   <!-- Near Earth -->
   <div id="nearEarth" class="container">
     <h1 id="neowHeader">Near Earth Object Tracker</h1>
+    <p class="neowsInfo" >NeoWs is a web service for near earth Asteroid information.</p>
     <div class="row neowsForm">
       <div class="col-md-6">
         <form id="dateSubmitForm">
@@ -62,7 +63,7 @@
         </div>
       </div>
       <div class="col-md-6">
-        <button type="button" id="sentryButton" name="button">Click For Current Data</button>
+        <button type="button" id="sentryButton" name="button">Impact Risk Data</button>
         <div id="sentry-results">
         </div>
       </div>
@@ -98,8 +99,9 @@
   <!-- ISS tracker -->
   <div id="issTracker" class="container">
     <h1>ISS Tracker</h1>
-    <div class="card">
+    <div id="issCard" class="card">
       <img src="https://static.wixstatic.com/media/5bc9ff_a6d47cc01cd549cbbca14c16a764affa~mv2.png/v1/fill/w_1075,h_428,al_c,lg_1,q_85/international-space-station-png-2.webp" width="400px" alt="Photo of ISS">
+      <span class="issText">
       <div class="location">
       </div>
       <div class="latLng">
@@ -110,6 +112,7 @@
       </div>
       <div class="visibility">
       </div>
+    </span>
     </div>
 
   </div>

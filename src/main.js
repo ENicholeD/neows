@@ -9,20 +9,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
 $(document).ready(function(){
+  const spaceBallsSound = require('./space-balls-theme.mp3');
+  const spaceBalls = new Audio(spaceBallsSound);
+  spaceBalls.volume = .09;
+  spaceBalls.play();
   $("#reset").click(function() {
-    const steamboatsound = require('./steamboat.wav');
-    const steamboat = new Audio(steamboatsound);
-
-    steamboat.volume = .8;
-    steamboat.play();
-
-
+    const daveSound = require('./dave.wav');
+    const dave = new Audio(daveSound);
+    dave.volume = .8;
+    dave.play();
     $(".container").hide();
     $(".sss").show();
-
   });
 
   $("#hubbleNewsBtn").click(function(){
+    const button1Sound = require('./button.mp3');
+    const button1 = new Audio(button1Sound);
+    button1.volume = .8;
+    button1.play();
     $(".sss").hide();
     $("#hubbleNews").show();
     $("#donki, #nearEarth, #marsWeather, #issTracker").hide();
@@ -51,6 +55,11 @@ $(document).ready(function(){
 
 
   $("#donkiBtn").click(function(){
+    const button5Sound = require('./donki.wav');
+    const button5 = new Audio(button5Sound);
+    button5.volume = .8;
+    button5.play();
+
     $(".sss").hide();
   $("#donki").show();
   $("#nearEarth, #marsWeather, #issTracker, #hubbleNews").hide();
@@ -92,10 +101,17 @@ $(document).ready(function(){
 
 
   $("#issTrackerBtn").click(function(){
+    const button3Sound = require('./retro2.wav');
+    const button3 = new Audio(button3Sound);
+    button3.volume = .8;
+    button3.play();
+
     $(".sss").hide();
     $("#issTracker").show();
     $("#nearEarth, #marsWeather, #donki, #hubbleNews").hide();
 // coordinates start here
+
+setInterval(function() {
   let coordinates = new Coordinates();
   let promiseC = coordinates.getCoordinates();
 
@@ -110,7 +126,6 @@ $(document).ready(function(){
     // Geocoding starts here
     let geoCode = new Geocoding();
     let promise2 = geoCode.getLocation(lat, lng);
-
     promise2.then(function(response) {
       const body2 = JSON.parse(response);
       console.log(body2);
@@ -123,16 +138,27 @@ $(document).ready(function(){
       $(".visibility").html(`<span class="strong">Visibility:</span> ${vis.charAt(0).toUpperCase() + vis.substring(1)}`);
     });
   });
+}, 1000);
 });
 
 
   // Neows starts here
   $("#neowsBtn").click(function(){
+    const button4Sound = require('./boop.wav');
+    const button4 = new Audio(button4Sound);
+    button4.volume = 1;
+    button4.play();
+
     $(".sss").hide();
     $("#nearEarth").show();
     $("#donki, #marsWeather, #issTracker, #hubbleNews").hide();
 
   $('#dateSubmitForm').submit(function(event) {
+    const button1Sound = require('./button.mp3');
+    const button1 = new Audio(button1Sound);
+    button1.volume = .8;
+    button1.play();
+
     event.preventDefault();
     const startDate = $('#inputDate').val();
     $('#inputDate').val("");
@@ -186,6 +212,11 @@ $(document).ready(function(){
 
     // sentry starts here
     $("#sentryButton").click(function(event){
+      const button1Sound = require('./button.mp3');
+      const button1 = new Audio(button1Sound);
+      button1.volume = .8;
+      button1.play();
+
       $(".sss").hide();
       $("#sentry-results").text('');
       let sentrySearch = new Sentry();
@@ -227,6 +258,11 @@ $(document).ready(function(){
 
       // marsWeather starts here
       $("#marsWeatherBtn").click(function() {
+        const button1Sound = require('./button.mp3');
+        const button1 = new Audio(button1Sound);
+        button1.volume = .8;
+        button1.play();
+
         $(".sss").hide();
         $("#marsWeather").show();
         $("#donki, #nearEarth, #issTracker, #hubbleNews").hide();
@@ -255,7 +291,7 @@ $(document).ready(function(){
       setInterval(() => {
         let count = Math.floor(Math.random() * 838);
         $(".space").html(`<img class="mySlides w3-animate-fading" id="imageR" src=${body.photos[count].img_src}>`);
-      }, 5000);
+      }, 3000);
     });
   });
 });

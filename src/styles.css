@@ -17,6 +17,13 @@ input{
   border: none;
   color: #ccff33;
   font-family: 'Orbitron', sans-serif;
+}
+
+.neowsInfo {
+  color: #ccff33;
+  font-family: 'Orbitron', sans-serif;
+  opacity: .732;
+text-align: center;
 
 }
 select{
@@ -35,7 +42,7 @@ select{
   opacity: .732;
   color: #ccff33;
   text-align: center;
-  margin-bottom: 10%;
+  /* margin-bottom: 10%; */
 
 }
 .neowsForm{
@@ -47,6 +54,7 @@ button {
   border: none;
   font-family: 'Orbitron', sans-serif;
   opacity: .732;
+  font-size: 26px;
 }
 #hubbleCard{
   background-color: black;
@@ -110,7 +118,7 @@ button {
   display: block;
   background-color: transparent;
   color: #ccff33;
-  margin-left: 10%;
+  margin-left: 15%;
   margin-top: 10%;
   opacity: .732;
 
@@ -125,18 +133,19 @@ button {
   font-family: 'Orbitron', sans-serif;
 }
 
+
 .hnb {
   display: block;
   margin-left: 88%;
-  margin-top: 36%;
+  margin-top: 36.9%;
   position: absolute;
   transform: rotate(10deg);
 }
 
 .hb {
   display: block;
-  margin-left: 6%;
-  margin-top: 10%;
+  margin-left: 4.5%;
+  margin-top: 11.5%;
   position: absolute;
   transform: rotate(-43deg);
 }
@@ -167,14 +176,14 @@ button {
 
 .dbp{
   display: block;
-  margin-left: 62%;
+  margin-left: 62.3%;
   margin-top: 44%;
   position: absolute;
 
 }
 #imageR {
   width: 400px;
-  opacity: .5;
+  opacity: .7;
 
 }
 
@@ -240,6 +249,11 @@ li{
   font-family: 'Orbitron', sans-serif;
   color: #ccff33;
   opacity: .732;
+}
+.output, .errorOutput {
+  opacity: .732;
+
+
 }
 .DRreport{
   padding-top: 5%;
