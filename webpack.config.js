@@ -25,7 +25,22 @@ module.exports = {
     })
   ],
   module: {
-  rules: [
+  rules:
+  [
+
+
+    {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+
+
+          },
+        ],
+      },
+
+
     {
       test: /\.css$/,
       use: [
@@ -40,7 +55,16 @@ module.exports = {
         /spec/
       ],
       loader: "eslint-loader"
-    }
+    },
+    {
+        test: /\.mp3$/,
+        loader: 'file-loader'
+      },
+      {
+        test:/\.wav$/,
+        loader: 'file-loader'
+      }
+
   ]
 }
 };

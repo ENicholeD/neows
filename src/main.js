@@ -10,6 +10,13 @@ import './styles.css';
 
 $(document).ready(function(){
   $("#reset").click(function() {
+    const steamboatsound = require('./steamboat.wav');
+    const steamboat = new Audio(steamboatsound);
+
+    steamboat.volume = .8;
+    steamboat.play();
+
+
     $(".container").hide();
     $(".sss").show();
 
@@ -51,7 +58,6 @@ $(document).ready(function(){
   $('.errorOutput').text('');
   $('.DRreport').text('');
 
-
   let donki = new Donki();
   let promiseDonki = donki.weatherDonki();
   promiseDonki.then(function(response) {
@@ -79,7 +85,7 @@ $(document).ready(function(){
   let promiseApod = apod.day();
   promiseApod.then(function(response){
     const body = JSON.parse(response);
-    let apodPic =  body.url;
+    let apodPic =  body.hdurl;
     let podPic = 'http://www.aljanh.net/data/archive/img/3140437918.png'
     $('body').css("background-image","url('" + podPic +"'), url('" + apodPic + "')");
   });
