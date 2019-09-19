@@ -138,7 +138,7 @@ setInterval(function() {
       $(".visibility").html(`<span class="strong">Visibility:</span> ${vis.charAt(0).toUpperCase() + vis.substring(1)}`);
     });
   });
-}, 20000);
+}, 2000);
 });
 
 
@@ -148,6 +148,9 @@ setInterval(function() {
     const button4 = new Audio(button4Sound);
     button4.volume = 1;
     button4.play();
+    $("#neow-results").html("");
+    $('#sentry-results').html("");
+
 
     $(".sss").hide();
     $("#nearEarth").show();
