@@ -138,7 +138,7 @@ setInterval(function() {
       $(".visibility").html(`<span class="strong">Visibility:</span> ${vis.charAt(0).toUpperCase() + vis.substring(1)}`);
     });
   });
-}, 1000);
+}, 20000);
 });
 
 
@@ -262,7 +262,7 @@ setInterval(function() {
         const button1 = new Audio(button1Sound);
         button1.volume = .8;
         button1.play();
-
+        $(".space").html("");
         $(".sss").hide();
         $("#marsWeather").show();
         $("#donki, #nearEarth, #issTracker, #hubbleNews").hide();
