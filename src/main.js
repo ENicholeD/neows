@@ -23,7 +23,7 @@ $(document).ready(function(){
   });
 
   $("#hubbleNewsBtn").click(function(){
-    const button1Sound = require('./button.mp3');
+    const button1Sound = require('./printer.wav');
     const button1 = new Audio(button1Sound);
     button1.volume = .8;
     button1.play();
